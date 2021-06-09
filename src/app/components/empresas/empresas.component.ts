@@ -26,6 +26,7 @@ export class EmpresasComponent implements OnInit {
   };
 
   Items: Empresa[] = [];
+  RegistrosTotal: number;
   Pagina = 1; // inicia pagina 1
 
   constructor(
@@ -37,6 +38,7 @@ export class EmpresasComponent implements OnInit {
   FormRegistro: FormGroup;
 
   submitted: boolean = false;
+
 
   ngOnInit() { this.FormBusqueda = this.formBuilder.group({
       Nombre: [null],
@@ -65,6 +67,7 @@ export class EmpresasComponent implements OnInit {
   Buscar() {
     this.empresasService.get().subscribe((res: any) => {
         this.Items = res;
+        this.RegistrosTotal = res.RegistrosTotal;
       });
   }
 
@@ -91,7 +94,7 @@ export class EmpresasComponent implements OnInit {
 
 // grabar tanto altas como modificaciones
   Grabar() {
-  this.submitted = true;
+	this.submitted = true;
      // verificar que los validadores esten OK
      if (this.FormRegistro.invalid) {
       return;
