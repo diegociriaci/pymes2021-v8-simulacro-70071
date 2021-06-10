@@ -92,14 +92,18 @@ export class EmpresasComponent implements OnInit {
     this.BuscarPorId(Dto, "C");
   }
 
-  //Eliminar(Dto) {
-    //if (this.AccionABMC == "B") {
-      //this.empresasService.delete(Dto.IdEmpresa).subscribe((res: any) => {
-        //this.Volver();
-        //this.modalDialogService.Alert('Registro agregado correctamente.');
-        //this.Buscar();
-      //}); 
-  //}} 
+  Eliminar(Dto) {
+    this.modalDialogService.Confirm(
+      'Esta seguro de eliminar este registro?',
+      undefined,
+      'SI',
+      'NO',
+      () =>
+        this.empresasService
+          .delete(Dto.IdEmpresa)
+          .subscribe((res: any) => this.Buscar())
+    );
+  }
 
 // comienza la modificacion, luego la confirma con el metodo Grabar
   Modificar(Dto) {
