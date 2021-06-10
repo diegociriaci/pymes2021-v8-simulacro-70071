@@ -14,7 +14,7 @@ import { Empresa } from "../models/empresa";
 export class EmpresasService {
   resourceUrl: string;
   constructor(private httpClient: HttpClient) {
-    this.resourceUrl = "https://pav2.azurewebsites.net/api/empresas";
+    this.resourceUrl = "https://pav2.azurewebsites.net/api/empresas/";
   }
 
   get() {

@@ -32,7 +32,7 @@ export class EmpresasComponent implements OnInit {
   constructor(
    public formBuilder: FormBuilder,
    private empresasService: EmpresasService,
-  private modalDialogService: ModalDialogService
+   private modalDialogService: ModalDialogService
   ) {}
   FormBusqueda: FormGroup;
   FormRegistro: FormGroup;
@@ -90,6 +90,22 @@ export class EmpresasComponent implements OnInit {
 
   Consultar(Dto) {
     this.BuscarPorId(Dto, "C");
+  }
+
+  //Eliminar(Dto) {
+    //if (this.AccionABMC == "B") {
+      //this.empresasService.delete(Dto.IdEmpresa).subscribe((res: any) => {
+        //this.Volver();
+        //this.modalDialogService.Alert('Registro agregado correctamente.');
+        //this.Buscar();
+      //}); 
+  //}} 
+
+// comienza la modificacion, luego la confirma con el metodo Grabar
+  Modificar(Dto) {
+    this.submitted = false;
+    this.FormRegistro.markAsUntouched();
+    this.BuscarPorId(Dto, 'M');
   }
 
 // grabar tanto altas como modificaciones
